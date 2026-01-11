@@ -1,7 +1,10 @@
 "use client"
 
 export default function Home() {
+
   return (
-    <div className="bg-white h-screen text-black"></div>
+    <div className="h-screen bg-white text-black">
+
+    </div>
   )
 }
