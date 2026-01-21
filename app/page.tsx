@@ -1,5 +1,8 @@
 "use client";
+import { useRouter } from "next/navigation";
 export default function Home() {
+  
+   const router = useRouter();
   return (
     <div style={{fontFamily: "Noto Sans Lao"}} className="min-h-screen w-full flex flex-col overflow-x-hidden font-sans bg-[#181111] text-white">
       <style dangerouslySetInnerHTML={{__html: `
@@ -25,17 +28,14 @@ export default function Home() {
               <a className="text-sm font-medium text-white transition-colors hover:text-[#d41111]" href="#">ຕິດຕໍ່</a>
             </nav>
             <div className="flex items-center gap-4">
-              <button className="hidden text-sm font-medium text-white hover:text-[#d41111] md:block">
-                ເຂົ້າສູ່ລະບົບ
-              </button>
               <button className="flex h-9 cursor-pointer items-center justify-center rounded-lg bg-[#d41111] px-4 text-sm font-bold text-white transition-transform hover:scale-105">
-                <span className="truncate">ລົງທະບຽນ</span>
+                <span className="mr-2 material-symbols-outlined text-[20px]">call</span>
+                <span className="truncate">ຕິດຕໍ່ພວກເຮົາ</span>
               </button>
             </div>
           </div>
         </div>
       </header>
-
       <main className="flex flex-1 flex-col">
         <section className="relative flex flex-col items-center justify-center overflow-hidden py-16 md:py-24">
           <div className="absolute -top-[20%] left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#d41111]/20 blur-[120px]"></div>       
@@ -54,13 +54,13 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
-                  <button className="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-lg bg-[#d41111] px-6 text-base font-bold text-white transition-all hover:bg-red-700">
-                    <span className="mr-2 material-symbols-outlined text-[20px]">rocket_launch</span>
-                    <span>ລົງທະບຽນໃຊ້ງານ</span>
+                  <button onClick={()=> router.push("/login")} className="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-lg bg-[#d41111] px-6 text-base font-bold text-white transition-all hover:bg-red-700">
+                    <span className="mr-2 material-symbols-outlined text-[20px]">login</span>
+                    <span>ເຂົ້າສູ່ລະບົບ</span>
                   </button>
                   <button className="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-lg border border-[#392828] bg-[#221616] px-6 text-base font-bold text-white transition-all hover:bg-[#392828]">
-                    <span className="mr-2 material-symbols-outlined text-[20px]">play_circle</span>
-                    <span>ເບິ່ງວິດີໂອແນະນຳ</span>
+                    <span className="mr-2 material-symbols-outlined text-[20px]">person_add</span>
+                    <span>ລົງທະບຽນຜູ້ໃຊ້ງານ</span>
                   </button>
                 </div>
                 <div className="mt-4 flex items-center justify-center gap-4 text-sm text-gray-400 lg:justify-start">
@@ -280,4 +280,3 @@ export default function Home() {
     </div>
   );
 };
-

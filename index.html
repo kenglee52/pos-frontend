@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="lo"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SUPER POS Login</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+Lao:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d41111",
+                        "primary-hover": "#b90e0e",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                        "surface-dark": "#2c1515",
+                        "input-bg": "#271c1c",
+                        "input-border": "#543b3b",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "lao": ["Noto Sans Lao", "sans-serif"],
+                        "body": ["Noto Sans Lao", "Manrope", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Lao', 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4 lg:p-0">
+<div class="w-full h-screen flex overflow-hidden">
+<!-- Left Side: Visual Branding (Hidden on mobile, visible on lg screens) -->
+<div class="hidden lg:flex w-1/2 relative bg-surface-dark flex-col justify-between p-12 overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-br from-background-dark/90 to-primary/40 z-10"></div>
+<div class="w-full h-full bg-cover bg-center" data-alt="Modern retail store counter with digital payment terminal" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVKUjeIZXFE2vHsv9bqt8dfihHBACOZGB08P-u_zmrk48Ylnwz66Tt1h2x-ee0diJ7KJXTx8Y0e7_O8bGUpnHg6FhSXabEpf-D04_vrp2cuBcOOaLvmjzEJdCXJjgQqgFj6hRpeR366adeSNMtcyMiWNg4XypTM--3wIvCbGsuF1wR08v79DkBya_mLomoukHDLFmrPQN0JyatRGwbSWyQvfb30P89Wc0VndEyr2pjnAM6XpLTczcclWsLVYE-j7DbqVnswuJsI4wk');">
+</div>
+</div>
+<!-- Logo Area -->
+<div class="relative z-20 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl font-display">S</div>
+<span class="text-white font-display font-bold text-2xl tracking-wide">SUPER POS</span>
+</div>
+<!-- Testimonial/Quote Area -->
+<div class="relative z-20 max-w-lg">
+<blockquote class="text-2xl text-white font-lao font-semibold leading-relaxed mb-4">
+                    "ລະບົບການຈັດການທີ່ດີທີ່ສຸດ ສໍາລັບທຸລະກິດຂອງທ່ານ. ງ່າຍ, ວ່ອງໄວ, ແລະ ປອດໄພ."
+                </blockquote>
+<p class="text-white/70 font-display text-sm">Enterprise Management System</p>
+</div>
+<!-- Footer Decorative -->
+<div class="relative z-20 text-white/40 text-xs font-display">
+                © 2024 SUPER POS &amp; E-COMMERCE
+            </div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="w-full lg:w-1/2 flex flex-col justify-center items-center bg-background-light dark:bg-[#181111] overflow-y-auto">
+<div class="w-full max-w-[480px] p-6 sm:p-8 flex flex-col">
+<!-- Mobile Logo (Visible only on small screens) -->
+<div class="lg:hidden flex items-center gap-2 mb-8 self-center">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white font-bold font-display">S</div>
+<span class="text-white font-display font-bold text-xl">SUPER POS</span>
+</div>
+<!-- Header Text -->
+<div class="mb-10 text-center lg:text-left">
+<h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 font-lao tracking-tight">ຍິນດີຕ້ອນຮັບ</h1>
+<p class="text-gray-500 dark:text-[#b99d9d] font-lao text-base">ກະລຸນາປ້ອນຂໍ້ມູນເພື່ອເຂົ້າສູ່ລະບົບ</p>
+</div>
+<!-- Form -->
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Phone Input -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-white font-lao" for="phone">ເບີໂທລະສັບ</label>
+<div class="relative">
+<input class="block w-full h-14 rounded-lg border-gray-300 dark:border-input-border bg-white dark:bg-input-bg text-gray-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-1 sm:text-base pl-4 pr-10 font-display placeholder:text-gray-400 dark:placeholder:text-[#6a5050]" id="phone" placeholder="20 XXXXXXXX" type="text"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400 dark:text-[#b99d9d]">
+<span class="material-symbols-outlined" style="font-size: 20px;">phone_iphone</span>
+</div>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block text-sm font-medium text-gray-700 dark:text-white font-lao" for="password">ລະຫັດຜ່ານ</label>
+</div>
+<div class="relative rounded-lg shadow-sm">
+<input class="block w-full h-14 rounded-lg border-gray-300 dark:border-input-border bg-white dark:bg-input-bg text-gray-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-1 sm:text-base pl-4 pr-12 font-display placeholder:text-gray-400 dark:placeholder:text-[#6a5050]" id="password" placeholder="*********" type="password"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-gray-400 dark:text-[#b99d9d] hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</div>
+</div>
+<div class="flex justify-end pt-1">
+<a class="text-sm font-medium text-primary hover:text-primary-hover font-lao transition-colors" href="#">ລືມລະຫັດຜ່ານ?</a>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-4">
+<button class="flex w-full justify-center rounded-lg bg-primary px-3 py-4 text-base font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 font-lao tracking-wide" type="submit">
+                            ເຂົ້າສູ່ລະບົບ
+                        </button>
+</div>
+</form>
+<!-- Footer Text -->
+<p class="mt-8 text-center text-sm text-gray-500 dark:text-[#7a6060] font-lao">
+                    ຍັງບໍ່ມີບັນຊີເທື່ອບໍ? 
+                    <a class="font-semibold text-primary hover:text-primary-hover transition-colors" href="#">ຕິດຕໍ່ຜູ້ເບິ່ງແຍງລະບົບ</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>
