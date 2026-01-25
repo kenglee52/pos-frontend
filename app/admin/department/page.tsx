@@ -13,7 +13,14 @@ export default function Department() {
                   html:`
                   <div class="flex flex-col gap-3">
                     <input 
-                    class="flex w-full min-w-0 py-2 flex-1 resize-none overflow-hidden rounded-lg border focus:outline-0 bg-transparent h-full placeholder:text-[#6b5d5d] px-3 text-sm font-normal leading-normal font-lao" 
+                    class="flex w-full min-w-0 py
+                    
+                    
+                    
+                    
+                    
+                    
+                    -2 flex-1 resize-none overflow-hidden rounded-lg border focus:outline-0 bg-transparent h-full placeholder:text-[#6b5d5d] px-3 text-sm font-normal leading-normal font-lao" 
                     placeholder="ຊື່ພະແນກ" 
                   />
                   <button class="p-2 rounded-md cursor-pointer text-white hover:scale-95 transform transition duration-200 bg-red-600">
