@@ -1,21 +1,21 @@
 "use client"
 import Sidebar from "@/components/sidebar";
-import { useDepartment } from "@/hooks/useDepartment";
+import { useUnit } from "@/hooks/useUnit";
 import { Plus} from "lucide-react";
-import DepartmentTable from "@/components/department_components/departmentTable";
+import UnitTable from "@/components/unit_components/unitTable";
 import Swal from "sweetalert2";
 export default function Department() {
-         const {createDepartment} = useDepartment();
+         const {createUnit} = useUnit();
          const formAdd = () =>{
             Swal.fire({
                   showConfirmButton: false,
                   showCloseButton: true,
-                  title:"ຟອມເພີ່ມພະແນກ",
+                  title:"ຟອມເພີ່ມຫົວໜ່ວຍ",
                   html:`
                   <div class="flex flex-col gap-3">
-                    <input id="department"
+                    <input id="unit"
                     class="flex w-full min-w-0 py-2 flex-1 resize-none overflow-hidden rounded-lg border focus:outline-0 bg-transparent h-full placeholder:text-[#6b5d5d] px-3 text-sm font-normal leading-normal font-lao" 
-                    placeholder="ຊື່ພະແນກ" 
+                    placeholder="ຫົວໜ່ວຍ" 
                   />
                   <button id="btn" class="p-2 rounded-md cursor-pointer text-white hover:scale-95 transform transition duration-200 bg-red-600">
                       ບັນທຶກ
@@ -26,12 +26,12 @@ export default function Department() {
                   didOpen: ()=>{
                     const btn = document.getElementById("btn");
                     btn?.addEventListener("click",async ()=>{
-                      const departmentName = (document.getElementById("department") as HTMLInputElement).value;
-                      if(departmentName === ""){
+                      const unitName = (document.getElementById("unit") as HTMLInputElement).value;
+                      if(unitName === ""){
                         return (document.getElementById("checkInput") as HTMLParagraphElement).innerHTML = "ກະລຸນາປ້ອນໃຫ້ຄົບ";
                       }
-                      await createDepartment({departmentName});
-                      (document.getElementById("department") as HTMLInputElement).value = "";
+                      await createUnit({unitName});
+                      (document.getElementById("unit") as HTMLInputElement).value = "";
                       Swal.fire({
                         title: "ເພີ່ມສຳເລັດ",
                         icon: "success",
@@ -68,7 +68,7 @@ export default function Department() {
                 <button className="md:hidden p-1 text-white">
                   <span className="material-symbols-outlined">menu</span>
                 </button>
-                <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ຈັດການພະແນກ</h2>
+                <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ຈັດການຫົວໜ່ວຍ</h2>
               </div>
               
               {/* Search Bar */}
@@ -79,7 +79,7 @@ export default function Department() {
                   </div>
                   <input 
                     className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 bg-transparent h-full placeholder:text-[#6b5d5d] px-3 text-sm font-normal leading-normal font-lao" 
-                    placeholder="ຄົ້ນຫາພະແນກ" 
+                    placeholder="ຄົ້ນຫາຫົວໜ່ວຍ" 
                   />
                 </div>
               </label>
@@ -115,12 +115,12 @@ export default function Department() {
                 <div className="flex gap-4 items-center">
                   <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ລາຍການພະແນກ</h2>
                   <button onClick={formAdd} style={{fontFamily: "Noto Sans Lao"}} className="p-2 rounded-md cursor-pointer hover:scale-95 transform transition duration-200 bg-red-600">
-                      <div className="flex"><Plus/>&nbsp;&nbsp;ເພີ່ມພະແນກໃໝ່</div>
+                      <div className="flex"><Plus/>&nbsp;&nbsp;ເພີ່ມຫົວໜ່ວຍໃໝ່</div>
                   </button>
                 </div>
                 <button className="text-[#d41111] text-sm font-bold hover:underline font-lao">ເບິ່ງທັງໝົດ</button>
               </div>
-              <DepartmentTable/>
+              <UnitTable/>
             </section>
           </div>
         </main>

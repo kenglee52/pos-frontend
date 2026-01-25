@@ -1,3 +1,4 @@
+import { Department } from "./department.type";
 export interface Employee {
   employeeID: number;
   employeeName: string;
@@ -5,4 +6,5 @@ export interface Employee {
   tel: string;
   departmentID: number;
   password: string;
+  department?: Department
 }

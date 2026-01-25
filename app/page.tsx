@@ -1,5 +1,7 @@
 "use client";
+
 import { useRouter } from "next/navigation";
+
 export default function Home() {
   
    const router = useRouter();
@@ -55,6 +57,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
                   <button onClick={()=> router.push("/login")} className="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-lg bg-[#d41111] px-6 text-base font-bold text-white transition-all hover:bg-red-700">
+
                     <span className="mr-2 material-symbols-outlined text-[20px]">login</span>
                     <span>ເຂົ້າສູ່ລະບົບ</span>
                   </button>

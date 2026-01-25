@@ -19,7 +19,7 @@ const Sidebar = () => {
 
           {/* Navigation */}
           <nav className="flex flex-col gap-2">
-            <a className="flex items-center gap-3 px-3 py-3 rounded-lg bg-[#d41111] text-white shadow-lg shadow-[#d41111]/20 group transition-all" href="#">
+            <a className="flex items-center gap-3 px-3 py-3 rounded-lg bg-[#d41111] text-white shadow-lg shadow-[#d41111]/20 group transition-all" href="/admin/dashboard">
               <span className="material-symbols-outlined">home</span>
               <p className="text-sm font-bold leading-normal font-lao">ໜ້າຫຼັກ</p>
             </a>
@@ -54,7 +54,7 @@ const Sidebar = () => {
                 </a>
 
                 <a
-                  href="/employee"
+                  href="/admin/employee"
                   className="px-3 py-2 rounded-md text-sm text-[#b99d9d]
                        hover:bg-white/5 hover:text-white transition"
                 >
@@ -62,7 +62,7 @@ const Sidebar = () => {
                 </a>
 
                 <a
-                  href="/unit"
+                  href="/admin/unit"
                   className="px-3 py-2 rounded-md text-sm text-[#b99d9d]
                        hover:bg-white/5 hover:text-white transition"
                 >
