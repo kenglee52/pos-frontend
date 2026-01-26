@@ -1,140 +1,456 @@
 <!DOCTYPE html>
+<html class="dark" lang="lo">
 
-<html class="dark" lang="lo"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SUPER POS Login</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+Lao:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind Config -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ໜ້າຈັດການສິນຄ້າແບບ Grid - SUPER POS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;900&amp;family=Noto+Sans+Lao:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config={
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#d41111",
-                        "primary-hover": "#b90e0e",
+                        "primary": "#9c1616",
                         "background-light": "#f8f6f6",
-                        "background-dark": "#221010",
-                        "surface-dark": "#2c1515",
-                        "input-bg": "#271c1c",
-                        "input-border": "#543b3b",
+                        "background-dark": "#171111",
                     },
                     fontFamily: {
-                        "display": ["Manrope", "sans-serif"],
-                        "lao": ["Noto Sans Lao", "sans-serif"],
-                        "body": ["Noto Sans Lao", "Manrope", "sans-serif"],
+                        "display": ["Public Sans","Noto Sans Lao","sans-serif"]
                     },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem", 
-                        "lg": "0.5rem", 
-                        "xl": "0.75rem", 
-                        "2xl": "1rem",
-                        "full": "9999px"
-                    },
+                    borderRadius: {"DEFAULT": "0.25rem","lg": "0.5rem","xl": "0.75rem","full": "9999px"},
                 },
             },
         }
     </script>
-<style>
+    <style type="text/tailwindcss">
         body {
-            font-family: 'Noto Sans Lao', 'Manrope', sans-serif;
+            font-family: 'Public Sans', 'Noto Sans Lao', sans-serif;
         }
         .material-symbols-outlined {
-            font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #171111;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #382929;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4 lg:p-0">
-<div class="w-full h-screen flex overflow-hidden">
-<!-- Left Side: Visual Branding (Hidden on mobile, visible on lg screens) -->
-<div class="hidden lg:flex w-1/2 relative bg-surface-dark flex-col justify-between p-12 overflow-hidden">
-<!-- Background Image with Overlay -->
-<div class="absolute inset-0 z-0">
-<div class="absolute inset-0 bg-gradient-to-br from-background-dark/90 to-primary/40 z-10"></div>
-<div class="w-full h-full bg-cover bg-center" data-alt="Modern retail store counter with digital payment terminal" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVKUjeIZXFE2vHsv9bqt8dfihHBACOZGB08P-u_zmrk48Ylnwz66Tt1h2x-ee0diJ7KJXTx8Y0e7_O8bGUpnHg6FhSXabEpf-D04_vrp2cuBcOOaLvmjzEJdCXJjgQqgFj6hRpeR366adeSNMtcyMiWNg4XypTM--3wIvCbGsuF1wR08v79DkBya_mLomoukHDLFmrPQN0JyatRGwbSWyQvfb30P89Wc0VndEyr2pjnAM6XpLTczcclWsLVYE-j7DbqVnswuJsI4wk');">
-</div>
-</div>
-<!-- Logo Area -->
-<div class="relative z-20 flex items-center gap-3">
-<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl font-display">S</div>
-<span class="text-white font-display font-bold text-2xl tracking-wide">SUPER POS</span>
-</div>
-<!-- Testimonial/Quote Area -->
-<div class="relative z-20 max-w-lg">
-<blockquote class="text-2xl text-white font-lao font-semibold leading-relaxed mb-4">
-                    "ລະບົບການຈັດການທີ່ດີທີ່ສຸດ ສໍາລັບທຸລະກິດຂອງທ່ານ. ງ່າຍ, ວ່ອງໄວ, ແລະ ປອດໄພ."
-                </blockquote>
-<p class="text-white/70 font-display text-sm">Enterprise Management System</p>
-</div>
-<!-- Footer Decorative -->
-<div class="relative z-20 text-white/40 text-xs font-display">
-                © 2024 SUPER POS &amp; E-COMMERCE
+
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen">
+    <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#382929] px-6 py-3 bg-background-dark sticky top-0 z-50">
+        <div class="flex items-center gap-8">
+            <div class="flex items-center gap-4 text-white">
+                <div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white">rocket_launch</span>
+                </div>
+                <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">SUPER POS</h2>
             </div>
-</div>
-<!-- Right Side: Login Form -->
-<div class="w-full lg:w-1/2 flex flex-col justify-center items-center bg-background-light dark:bg-[#181111] overflow-y-auto">
-<div class="w-full max-w-[480px] p-6 sm:p-8 flex flex-col">
-<!-- Mobile Logo (Visible only on small screens) -->
-<div class="lg:hidden flex items-center gap-2 mb-8 self-center">
-<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white font-bold font-display">S</div>
-<span class="text-white font-display font-bold text-xl">SUPER POS</span>
-</div>
-<!-- Header Text -->
-<div class="mb-10 text-center lg:text-left">
-<h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 font-lao tracking-tight">ຍິນດີຕ້ອນຮັບ</h1>
-<p class="text-gray-500 dark:text-[#b99d9d] font-lao text-base">ກະລຸນາປ້ອນຂໍ້ມູນເພື່ອເຂົ້າສູ່ລະບົບ</p>
-</div>
-<!-- Form -->
-<form class="space-y-6" onsubmit="event.preventDefault();">
-<!-- Phone Input -->
-<div class="space-y-2">
-<label class="block text-sm font-medium text-gray-700 dark:text-white font-lao" for="phone">ເບີໂທລະສັບ</label>
-<div class="relative">
-<input class="block w-full h-14 rounded-lg border-gray-300 dark:border-input-border bg-white dark:bg-input-bg text-gray-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-1 sm:text-base pl-4 pr-10 font-display placeholder:text-gray-400 dark:placeholder:text-[#6a5050]" id="phone" placeholder="20 XXXXXXXX" type="text"/>
-<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400 dark:text-[#b99d9d]">
-<span class="material-symbols-outlined" style="font-size: 20px;">phone_iphone</span>
-</div>
-</div>
-</div>
-<!-- Password Input -->
-<div class="space-y-2">
-<div class="flex justify-between items-center">
-<label class="block text-sm font-medium text-gray-700 dark:text-white font-lao" for="password">ລະຫັດຜ່ານ</label>
-</div>
-<div class="relative rounded-lg shadow-sm">
-<input class="block w-full h-14 rounded-lg border-gray-300 dark:border-input-border bg-white dark:bg-input-bg text-gray-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary dark:focus:border-primary dark:focus:ring-1 sm:text-base pl-4 pr-12 font-display placeholder:text-gray-400 dark:placeholder:text-[#6a5050]" id="password" placeholder="*********" type="password"/>
-<div class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-gray-400 dark:text-[#b99d9d] hover:text-primary transition-colors">
-<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
-</div>
-</div>
-<div class="flex justify-end pt-1">
-<a class="text-sm font-medium text-primary hover:text-primary-hover font-lao transition-colors" href="#">ລືມລະຫັດຜ່ານ?</a>
-</div>
-</div>
-<!-- Actions -->
-<div class="pt-4">
-<button class="flex w-full justify-center rounded-lg bg-primary px-3 py-4 text-base font-semibold text-white shadow-sm hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200 font-lao tracking-wide" type="submit">
-                            ເຂົ້າສູ່ລະບົບ
-                        </button>
-</div>
-</form>
-<!-- Footer Text -->
-<p class="mt-8 text-center text-sm text-gray-500 dark:text-[#7a6060] font-lao">
-                    ຍັງບໍ່ມີບັນຊີເທື່ອບໍ? 
-                    <a class="font-semibold text-primary hover:text-primary-hover transition-colors" href="#">ຕິດຕໍ່ຜູ້ເບິ່ງແຍງລະບົບ</a>
-</p>
-</div>
-</div>
-</div>
-</body></html>
+            <label class="flex flex-col min-w-40 !h-10 max-w-64">
+                <div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden">
+                    <div class="text-[#b79e9e] flex border-none bg-[#382929] items-center justify-center pl-4">
+                        <span class="material-symbols-outlined">search</span>
+                    </div>
+                    <input
+                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-white focus:outline-0 focus:ring-0 border-none bg-[#382929] h-full placeholder:text-[#b79e9e] px-4 pl-2 text-base font-normal"
+                        placeholder="ຄົ້ນຫາສິນຄ້າ..." value="" />
+                </div>
+            </label>
+        </div>
+        <div class="flex flex-1 justify-end gap-6 items-center">
+            <nav class="flex items-center gap-6">
+                <a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">ໜ້າຫຼັກ</a>
+                <a class="text-primary text-sm font-bold border-b-2 border-primary" href="#">ສິນຄ້າ</a>
+                <a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">ສາງສິນຄ້າ</a>
+                <a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">ລາຍງານ</a>
+            </nav>
+            <div class="h-6 w-px bg-[#382929]"></div>
+            <div class="flex items-center gap-3">
+                <div class="text-right hidden md:block">
+                    <p class="text-xs text-white font-bold">Admin User</p>
+                    <p class="text-[10px] text-[#b79e9e]">ຜູ້ດູແລລະບົບ</p>
+                </div>
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-[#382929]"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjYDCZOUiMXimrJgLZX6FcOGGao0XfRWP2tI6PaMwUSN_qilAUxrd__dSeBNXU_w4r3QVHlbweNs0f7aVNZDnXiWEUbZSQQL_45Kmbep1gKnKSqMK-HqAi1i3amOzUl9qHiLg35Epw8a9msUZkdfl1cfhMM1_0s8tipf8nUOZ6rg1t8aL_Rni9wGETY53vI588rAdddMeArC7LiVeUcaEuMtDZiN3_ODVJ2dDXLyrvQ_ZMMEafU3Q9Mm-Q2IB4qteTxuMEk7amoNBL");'>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="flex">
+        <aside
+            class="w-64 h-[calc(100vh-65px)] border-r border-[#382929] bg-background-dark p-4 flex flex-col justify-between sticky top-[65px]">
+            <div class="flex flex-col gap-2">
+                <div
+                    class="flex items-center gap-3 px-3 py-2 text-[#b79e9e] hover:bg-[#382929] hover:text-white rounded-lg transition-all cursor-pointer">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <p class="text-sm font-medium">ແຜງຄວບຄຸມ</p>
+                </div>
+                <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white shadow-lg">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <p class="text-sm font-medium">ຈັດການສິນຄ້າ</p>
+                </div>
+                <div
+                    class="flex items-center gap-3 px-3 py-2 text-[#b79e9e] hover:bg-[#382929] hover:text-white rounded-lg transition-all cursor-pointer">
+                    <span class="material-symbols-outlined">category</span>
+                    <p class="text-sm font-medium">ປະເພດສິນຄ້າ</p>
+                </div>
+                <div
+                    class="flex items-center gap-3 px-3 py-2 text-[#b79e9e] hover:bg-[#382929] hover:text-white rounded-lg transition-all cursor-pointer">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <p class="text-sm font-medium">ການຂາຍ</p>
+                </div>
+                <div
+                    class="flex items-center gap-3 px-3 py-2 text-[#b79e9e] hover:bg-[#382929] hover:text-white rounded-lg transition-all cursor-pointer">
+                    <span class="material-symbols-outlined">settings</span>
+                    <p class="text-sm font-medium">ຕັ້ງຄ່າ</p>
+                </div>
+            </div>
+            <button
+                class="flex items-center gap-3 px-3 py-2 text-primary hover:bg-primary/10 rounded-lg transition-all">
+                <span class="material-symbols-outlined">logout</span>
+                <p class="text-sm font-bold">ອອກຈາກລະບົບ</p>
+            </button>
+        </aside>
+        <main class="flex-1 p-8">
+            <div class="flex flex-wrap gap-2 mb-4">
+                <a class="text-[#b79e9e] text-sm font-medium hover:text-white" href="#">ໜ້າຫຼັກ</a>
+                <span class="text-[#b79e9e] text-sm">/</span>
+                <span class="text-white text-sm font-medium">ຈັດການຂໍ້ມູນສິນຄ້າແບບ Grid</span>
+            </div>
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+                <div class="flex flex-col gap-1">
+                    <h1 class="text-white text-3xl font-black tracking-tight">ໜ້າຈັດການຂໍ້ມູນສິນຄ້າ</h1>
+                    <p class="text-[#b79e9e] text-sm">ຈັດການຂໍ້ມູນສິນຄ້າ, ສະຕັອກ ແລະ ລາຄາສິນຄ້າທັງໝົດໃນຮູບແບບ Grid</p>
+                </div>
+                <button
+                    class="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-red-700 text-white rounded-lg font-bold shadow-lg transition-transform active:scale-95">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    <span>ເພີ່ມສິນຄ້າໃໝ່</span>
+                </button>
+            </div>
+            <div
+                class="bg-[#1e1e1e] border border-[#382929] rounded-xl p-4 mb-6 flex flex-wrap justify-between items-center gap-4">
+                <div class="flex gap-3">
+                    <div class="relative group">
+                        <select
+                            class="bg-[#382929] border-none text-white text-sm rounded-lg pl-10 pr-8 py-2 appearance-none focus:ring-2 focus:ring-primary min-w-[180px]">
+                            <option>ທຸກໝວດໝູ່</option>
+                            <option>ເຄື່ອງດື່ມ</option>
+                            <option>ອາຫານແຫ້ງ</option>
+                            <option>ຂອງໃຊ້ທົ່ວໄປ</option>
+                        </select>
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#b79e9e] text-lg">filter_list</span>
+                    </div>
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 bg-[#382929] text-white rounded-lg text-sm font-medium hover:bg-[#4a3a3a]">
+                        <span class="material-symbols-outlined text-lg">sort</span>
+                        ຈັດລຽງ
+                    </button>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex bg-[#382929] p-1 rounded-lg">
+                        <button class="p-1.5 text-[#b79e9e] hover:text-white"><span
+                                class="material-symbols-outlined text-xl">list</span></button>
+                        <button class="p-1.5 bg-primary text-white rounded-md shadow-sm"><span
+                                class="material-symbols-outlined text-xl">grid_view</span></button>
+                    </div>
+                    <div class="text-[#b79e9e] text-sm">
+                        ສະແດງທັງໝົດ: <span class="text-white font-bold">120</span> ລາຍການ
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+                <div
+                    class="bg-[#1e1e1e] border border-[#382929] rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                    <div class="relative aspect-square overflow-hidden bg-[#2a1f1f]">
+                        <img alt="Product"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn4leNDE-F7AQ0pfKNHzLtDz8B5joagAonvjL68DqOLTG3hg0Mv6rW1yMYwwsj72C1xjy5bWTN3ukFJ7tEvJ1ER7gZirecyIiuWwedjf5X9mf4Dmn6fMNCMPdgB2odsFoQivjFTT_zp8hdowa2kuFQhCHqlNg8qKfX7nodlGz2r-QfVTbbxHbpYMA3f50Na4M49xb2oA2LPh1YZI4s7URcsvzLd2AKYBe5K-Bt4KQurNX3r8MAWXCjB3Ue_eifOPVyHaNgTrC5Q3UX" />
+                        <div class="absolute top-2 right-2">
+                            <span
+                                class="px-2 py-1 bg-blue-500/20 text-blue-400 text-[10px] font-bold rounded border border-blue-500/30 backdrop-blur-md">ເຄື່ອງດື່ມ</span>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                                class="p-3 bg-white/10 hover:bg-blue-500/40 text-white rounded-full backdrop-blur-md transition-colors"><span
+                                    class="material-symbols-outlined">edit</span></button>
+                            <button
+                                class="p-3 bg-white/10 hover:bg-red-500/40 text-white rounded-full backdrop-blur-md transition-colors"><span
+                                    class="material-symbols-outlined">delete</span></button>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div>
+                            <p class="text-[10px] text-[#b79e9e] font-mono mb-1">#P00124</p>
+                            <h3 class="text-white font-bold text-lg truncate">ນ້ຳດື່ມ ກາຊ້າງ 500ml</h3>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="space-y-1">
+                                <p class="text-xs text-[#b79e9e]">ລາຄາຂາຍ</p>
+                                <p class="text-xl font-black text-primary">5,000 ກີບ</p>
+                            </div>
+                            <div class="text-right space-y-1">
+                                <p class="text-xs text-[#b79e9e]">ສະຕັອກ</p>
+                                <p class="text-sm font-bold text-green-500">250 ຕຸກ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1e1e1e] border border-[#382929] rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                    <div class="relative aspect-square overflow-hidden bg-[#2a1f1f]">
+                        <img alt="Product"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDF-wGXo-6CMskPFZOHVa9368ja3jX32LtAj5OQjnMYzz-1D3w6qe4WBrgi1qRn1SvGvEKSu0D3Pbgc-h_zCoUJFd8Qh9ZyyTEZp6pYFMfViTLV9gsw1JIWin94vcMsCH4BA-vJ93hOeIocDQjfOARm6aEhaPVWUIHSo9UE1hRaXIV9z17P-iazZOGrKr9kifkGR3SoWcg8J9kZ9YBpBiASJKJzQ6lPSnL9CYrMY5pvLaa-ACbDQJXn_kLqdHNNqJl7LLgWnfFRE4-" />
+                        <div class="absolute top-2 right-2">
+                            <span
+                                class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-[10px] font-bold rounded border border-yellow-500/30 backdrop-blur-md">ອາຫານແຫ້ງ</span>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                                class="p-3 bg-white/10 hover:bg-blue-500/40 text-white rounded-full backdrop-blur-md transition-colors"><span
+                                    class="material-symbols-outlined">edit</span></button>
+                            <button
+                                class="p-3 bg-white/10 hover:bg-red-500/40 text-white rounded-full backdrop-blur-md transition-colors"><span
+                                    class="material-symbols-outlined">delete</span></button>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div>
+                            <p class="text-[10px] text-[#b79e9e] font-mono mb-1">#P00125</p>
+                            <h3 class="text-white font-bold text-lg truncate">ໝີ່ສຳເລັດຮູບ ມາໆໆ</h3>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="space-y-1">
+                                <p class="text-xs text-[#b79e9e]">ລາຄາຂາຍ</p>
+                                <p class="text-xl font-black text-primary">3,500 ກີບ</p>
+                            </div>
+                            <div class="text-right space-y-1">
+                                <p class="text-xs text-[#b79e9e]">ສະຕັອກ</p>
+                                <p class="text-sm font-bold text-red-500">8 ຫໍ່ (ຕ່ຳ)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1e1e1e] border border-[#382929] rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                    <div class="relative aspect-square overflow-hidden bg-[#2a1f1f]">
+                        <img alt="Product"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_czKHzqzD96Mw03Ub8OaPf-ZMz0tJ78Gvxbs_YDumcHGbFSfs_RMfOSg6Kvnrhp-gFzlzON5JTlhUV6bsm1kePpsiIpvyI8DFIYcrMb0j-0NdxaaNDqLkGEGDFbSXdU-QeKcvv2xo-vEj1t1AMD7JgPPTkfi5Dls5XLej3L9pN9EknzxMAi2nk37RI-4TAKjWH7i3UVTaA4MO5Fi6Vlzwp_vhd6p7-iNNbVrhEmNv-ZBp8h2K8fq74GH5nUcJaK70NDICO_aslFAW" />
+                        <div class="absolute top-2 right-2">
+                            <span
+                                class="px-2 py-1 bg-purple-500/20 text-purple-400 text-[10px] font-bold rounded border border-purple-500/30 backdrop-blur-md">ຂອງໃຊ້ທົ່ວໄປ</span>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                                class="p-3 bg-white/10 hover:bg-blue-500/40 text-white rounded-full backdrop-blur-md transition-colors"><span
+                                    class="material-symbols-outlined">edit</span></button>
+                            <button
+                                class="p-3 bg-white/10 hover:bg-red-500/40 text-white rounded-full backdrop-blur-md transition-colors"><span
+                                    class="material-symbols-outlined">delete</span></button>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div>
+                            <p class="text-[10px] text-[#b79e9e] font-mono mb-1">#P00126</p>
+                            <h3 class="text-white font-bold text-lg truncate">ນ້ຳຢາລ້າງຈານ ຊັນໄລ 450ml</h3>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="space-y-1">
+                                <p class="text-xs text-[#b79e9e]">ລາຄາຂາຍ</p>
+                                <p class="text-xl font-black text-primary">12,000 ກີບ</p>
+                            </div>
+                            <div class="text-right space-y-1">
+                                <p class="text-xs text-[#b79e9e]">ສະຕັອກ</p>
+                                <p class="text-sm font-bold text-white">45 ຕຸກ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1e1e1e] border border-[#382929] rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                    <div class="relative aspect-square overflow-hidden bg-[#2a1f1f]">
+                        <img alt="Product"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4yqRFqBBhwIUq0h0d7irGT5t_l0it2sh7a89fiIDhkhuOTlRLAhddjBLi-pvEfxpjSUbpyuLQ6Bm5wnvX4NzlyBPi-HGoidnLfoRCgentDfw3zY8odcxbz9T5fbnW89Tmsq0PjICCImprlWqk3zsPDRm1V08fwQ6jiei3MTPcijR-WUO93pEyJ0e5VJH7wCqar9oF4R6yHIF1w0aVouJNOERSR60V0At3zdtE8CMQffSQiAMJVGwLSJBRmQ3t-V-Vocn6xN7UAlFd" />
+                        <div class="absolute top-2 right-2">
+                            <span
+                                class="px-2 py-1 bg-blue-500/20 text-blue-400 text-[10px] font-bold rounded border border-blue-500/30 backdrop-blur-md">ເຄື່ອງດື່ມ</span>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                                class="p-3 bg-white/10 hover:bg-blue-500/40 text-white rounded-full backdrop-blur-md transition-colors"><span
+                                    class="material-symbols-outlined">edit</span></button>
+                            <button
+                                class="p-3 bg-white/10 hover:bg-red-500/40 text-white rounded-full backdrop-blur-md transition-colors"><span
+                                    class="material-symbols-outlined">delete</span></button>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div>
+                            <p class="text-[10px] text-[#b79e9e] font-mono mb-1">#P00127</p>
+                            <h3 class="text-white font-bold text-lg truncate">ນ້ຳໝາກໄມ້ລວມ 1L</h3>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="space-y-1">
+                                <p class="text-xs text-[#b79e9e]">ລາຄາຂາຍ</p>
+                                <p class="text-xl font-black text-primary">25,000 ກີບ</p>
+                            </div>
+                            <div class="text-right space-y-1">
+                                <p class="text-xs text-[#b79e9e]">ສະຕັອກ</p>
+                                <p class="text-sm font-bold text-green-500">120 ກ່ອງ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-center bg-[#1e1e1e] border border-[#382929] rounded-xl px-6 py-4">
+                <p class="text-sm text-[#b79e9e]">ສະແດງໜ້າທີ 1 ຈາກ 10</p>
+                <div class="flex gap-1">
+                    <button class="p-2 rounded hover:bg-[#382929] text-[#b79e9e] transition-colors"><span
+                            class="material-symbols-outlined">chevron_left</span></button>
+                    <button class="size-8 rounded bg-primary text-white text-sm font-bold shadow-sm">1</button>
+                    <button
+                        class="size-8 rounded hover:bg-[#382929] text-[#b79e9e] text-sm transition-colors">2</button>
+                    <button
+                        class="size-8 rounded hover:bg-[#382929] text-[#b79e9e] text-sm transition-colors">3</button>
+                    <span class="text-[#382929] flex items-center px-1">...</span>
+                    <button
+                        class="size-8 rounded hover:bg-[#382929] text-[#b79e9e] text-sm transition-colors">10</button>
+                    <button class="p-2 rounded hover:bg-[#382929] text-[#b79e9e] transition-colors"><span
+                            class="material-symbols-outlined">chevron_right</span></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+    <div class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
+        <div
+            class="bg-background-dark border border-[#382929] w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="px-8 py-5 border-b border-[#382929] flex justify-between items-center bg-[#211111]">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">add_box</span>
+                    ເພີ່ມສິນຄ້າໃໝ່
+                </h3>
+                <button class="p-2 hover:bg-[#382929] rounded-full text-[#b79e9e]">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto custom-scrollbar">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div class="space-y-4">
+                        <label class="block">
+                            <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ຊື່ສິນຄ້າ *</span>
+                            <input
+                                class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+                                placeholder="ລະບຸຊື່ສິນຄ້າ..." type="text" />
+                        </label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="block">
+                                <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ໝວດໝູ່ *</span>
+                                <select
+                                    class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4 appearance-none">
+                                    <option>ເລືອກໝວດໝູ່</option>
+                                    <option>ເຄື່ອງດື່ມ</option>
+                                    <option>ອາຫານແຫ້ງ</option>
+                                </select>
+                            </label>
+                            <label class="block">
+                                <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ໜ່ວຍ *</span>
+                                <select
+                                    class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4 appearance-none">
+                                    <option>ເລືອກໜ່ວຍ</option>
+                                    <option>ຕຸກ</option>
+                                    <option>ຫໍ່</option>
+                                    <option>ລັງ</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="block">
+                                <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ລາຄາຕົ້ນທຶນ</span>
+                                <input
+                                    class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+                                    placeholder="0" type="number" />
+                            </label>
+                            <label class="block">
+                                <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ລາຄາຂາຍ *</span>
+                                <input
+                                    class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4 font-bold text-primary"
+                                    placeholder="0" type="number" />
+                            </label>
+                        </div>
+                        <label class="block">
+                            <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ຈຳນວນໃນສາງ *</span>
+                            <input
+                                class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+                                placeholder="0" type="number" />
+                        </label>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="block">
+                                <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ວັນທີຜະລິດ</span>
+                                <input
+                                    class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+                                    type="date" />
+                            </label>
+                            <label class="block">
+                                <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ວັນໝົດອາຍຸ</span>
+                                <input
+                                    class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+                                    type="date" />
+                            </label>
+                        </div>
+                        <label class="block">
+                            <span class="text-sm font-medium text-[#b79e9e] mb-1 block">ຄຳອະທິບາຍ</span>
+                            <textarea
+                                class="w-full bg-[#382929] border-none rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+                                placeholder="ລາຍລະອຽດເພີ່ມເຕີມ..." rows="3"></textarea>
+                        </label>
+                        <div>
+                            <span class="text-sm font-medium text-[#b79e9e] mb-2 block">ຮູບພາບສິນຄ້າ</span>
+                            <div
+                                class="border-2 border-dashed border-[#382929] hover:border-primary/50 transition-colors rounded-xl p-6 flex flex-col items-center justify-center gap-2 cursor-pointer bg-[#211111]/50 group">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-[#b79e9e] group-hover:text-primary transition-colors">cloud_upload</span>
+                                <p class="text-xs text-[#b79e9e] group-hover:text-white">ຄລິກ ຫຼື ລາກຮູບມາໃສ່ບ່ອນນີ້</p>
+                                <p class="text-[10px] text-[#4a3a3a]">PNG, JPG ຂະໜາດບໍ່ເກີນ 5MB</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="px-8 py-5 border-t border-[#382929] bg-[#211111] flex justify-end gap-4">
+                <button
+                    class="px-6 py-2 rounded-lg text-[#b79e9e] font-bold hover:bg-[#382929] transition-colors">ຍົກເລີກ</button>
+                <button
+                    class="px-8 py-2 rounded-lg bg-primary hover:bg-red-700 text-white font-bold shadow-lg transition-transform active:scale-95">ບັນທຶກຂໍ້ມູນ</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

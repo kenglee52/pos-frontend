@@ -2,20 +2,21 @@
 import Sidebar from "@/components/sidebar";
 import { useUnit } from "@/hooks/useUnit";
 import { Plus} from "lucide-react";
-import UnitTable from "@/components/unit_components/unitTable";
+import CategoryTable from "@/components/category_components/categoryTable";
 import Swal from "sweetalert2";
-export default function Unit() {
-         const {createUnit} = useUnit();
+import { useCategory } from "@/hooks/useCategory";
+export default function Category() {
+         const {createCategory} = useCategory();
          const formAdd = () =>{
             Swal.fire({
                   showConfirmButton: false,
                   showCloseButton: true,
-                  title:"ຟອມເພີ່ມຫົວໜ່ວຍ",
+                  title:"ຟອມເພີ່ມປະເພດສິນຄ້າ",
                   html:`
                   <div class="flex flex-col gap-3">
-                    <input id="unit"
+                    <input id="category"
                     class="flex w-full min-w-0 py-2 flex-1 resize-none overflow-hidden rounded-lg border focus:outline-0 bg-transparent h-full placeholder:text-[#6b5d5d] px-3 text-sm font-normal leading-normal font-lao" 
-                    placeholder="ຫົວໜ່ວຍ" 
+                    placeholder="ປະເພດສິນຄ້າ" 
                   />
                   <button id="btn" class="p-2 rounded-md cursor-pointer text-white hover:scale-95 transform transition duration-200 bg-red-600">
                       ບັນທຶກ
@@ -26,12 +27,12 @@ export default function Unit() {
                   didOpen: ()=>{
                     const btn = document.getElementById("btn");
                     btn?.addEventListener("click",async ()=>{
-                      const unitName = (document.getElementById("unit") as HTMLInputElement).value;
-                      if(unitName === ""){
+                      const categoryName = (document.getElementById("category") as HTMLInputElement).value;
+                      if(categoryName === ""){
                         return (document.getElementById("checkInput") as HTMLParagraphElement).innerHTML = "ກະລຸນາປ້ອນໃຫ້ຄົບ";
                       }
-                      await createUnit({unitName});
-                      (document.getElementById("unit") as HTMLInputElement).value = "";
+                      await createCategory({categoryName});
+                      (document.getElementById("category") as HTMLInputElement).value = "";
                       Swal.fire({
                         title: "ເພີ່ມສຳເລັດ",
                         icon: "success",
@@ -68,7 +69,7 @@ export default function Unit() {
                 <button className="md:hidden p-1 text-white">
                   <span className="material-symbols-outlined">menu</span>
                 </button>
-                <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ຈັດການຫົວໜ່ວຍ</h2>
+                <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ຈັດການປະເພດສິນຄ້າ</h2>
               </div>
               
               {/* Search Bar */}
@@ -79,7 +80,7 @@ export default function Unit() {
                   </div>
                   <input 
                     className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 bg-transparent h-full placeholder:text-[#6b5d5d] px-3 text-sm font-normal leading-normal font-lao" 
-                    placeholder="ຄົ້ນຫາຫົວໜ່ວຍ" 
+                    placeholder="ຄົ້ນຫາປະເພດສິນຄ້າ" 
                   />
                 </div>
               </label>
@@ -113,14 +114,14 @@ export default function Unit() {
             <section className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <div className="flex gap-4 items-center">
-                  <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ລາຍການຫົວໜ່ວຍ</h2>
+                  <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ລາຍການປະເພດສິນຄ້າ</h2>
                   <button onClick={formAdd} style={{fontFamily: "Noto Sans Lao"}} className="p-2 rounded-md cursor-pointer hover:scale-95 transform transition duration-200 bg-red-600">
-                      <div className="flex"><Plus/>&nbsp;&nbsp;ເພີ່ມຫົວໜ່ວຍໃໝ່</div>
+                      <div className="flex"><Plus/>&nbsp;&nbsp;ເພີ່ມປະເພດສິນຄ້າໃໝ່</div>
                   </button>
                 </div>
                 <button className="text-[#d41111] text-sm font-bold hover:underline font-lao">ເບິ່ງທັງໝົດ</button>
               </div>
-              <UnitTable/>
+              <CategoryTable/>
             </section>
           </div>
         </main>

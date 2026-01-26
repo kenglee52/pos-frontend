@@ -1,46 +1,8 @@
 "use client"
 import Sidebar from "@/components/sidebar";
-import { useUnit } from "@/hooks/useUnit";
-import { Plus} from "lucide-react";
-import UnitTable from "@/components/unit_components/unitTable";
-import Swal from "sweetalert2";
-export default function Unit() {
-         const {createUnit} = useUnit();
-         const formAdd = () =>{
-            Swal.fire({
-                  showConfirmButton: false,
-                  showCloseButton: true,
-                  title:"ຟອມເພີ່ມຫົວໜ່ວຍ",
-                  html:`
-                  <div class="flex flex-col gap-3">
-                    <input id="unit"
-                    class="flex w-full min-w-0 py-2 flex-1 resize-none overflow-hidden rounded-lg border focus:outline-0 bg-transparent h-full placeholder:text-[#6b5d5d] px-3 text-sm font-normal leading-normal font-lao" 
-                    placeholder="ຫົວໜ່ວຍ" 
-                  />
-                  <button id="btn" class="p-2 rounded-md cursor-pointer text-white hover:scale-95 transform transition duration-200 bg-red-600">
-                      ບັນທຶກ
-                  </button>
-                  <p class="text-red-600" id="checkInput"></p>
-                  <div/>
-                  `,
-                  didOpen: ()=>{
-                    const btn = document.getElementById("btn");
-                    btn?.addEventListener("click",async ()=>{
-                      const unitName = (document.getElementById("unit") as HTMLInputElement).value;
-                      if(unitName === ""){
-                        return (document.getElementById("checkInput") as HTMLParagraphElement).innerHTML = "ກະລຸນາປ້ອນໃຫ້ຄົບ";
-                      }
-                      await createUnit({unitName});
-                      (document.getElementById("unit") as HTMLInputElement).value = "";
-                      Swal.fire({
-                        title: "ເພີ່ມສຳເລັດ",
-                        icon: "success",
-                        confirmButtonText: "ຢຶນຢັນ"
-                      });
-                    })
-                  }
-            })
-         }
+import ProductGrid from "@/components/product_components/productGrid";
+import ProductForm from "@/components/product_components/productForm";
+export default function Product() {
     return (
         <div className="font-sans antialiased text-[#111418] dark:text-white">
       {/* Font Imports (In Next.js, ideally these go in layout.tsx) */}
@@ -68,7 +30,7 @@ export default function Unit() {
                 <button className="md:hidden p-1 text-white">
                   <span className="material-symbols-outlined">menu</span>
                 </button>
-                <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ຈັດການຫົວໜ່ວຍ</h2>
+                <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ຈັດການສິນຄ້າ</h2>
               </div>
               
               {/* Search Bar */}
@@ -79,7 +41,7 @@ export default function Unit() {
                   </div>
                   <input 
                     className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 bg-transparent h-full placeholder:text-[#6b5d5d] px-3 text-sm font-normal leading-normal font-lao" 
-                    placeholder="ຄົ້ນຫາຫົວໜ່ວຍ" 
+                    placeholder="ຄົ້ນຫາສິນຄ້າ" 
                   />
                 </div>
               </label>
@@ -109,18 +71,15 @@ export default function Unit() {
           </header>
           {/* Scrollable Content */}
           <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8 bg-[#221010]">
-            {/* Recent Transactions Table */}
+            <ProductForm/>
             <section className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <div className="flex gap-4 items-center">
-                  <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ລາຍການຫົວໜ່ວຍ</h2>
-                  <button onClick={formAdd} style={{fontFamily: "Noto Sans Lao"}} className="p-2 rounded-md cursor-pointer hover:scale-95 transform transition duration-200 bg-red-600">
-                      <div className="flex"><Plus/>&nbsp;&nbsp;ເພີ່ມຫົວໜ່ວຍໃໝ່</div>
-                  </button>
+                  <h2 className="text-white text-xl font-bold leading-tight tracking-tight font-lao">ລາຍການສິນຄ້າ</h2>
                 </div>
                 <button className="text-[#d41111] text-sm font-bold hover:underline font-lao">ເບິ່ງທັງໝົດ</button>
               </div>
-              <UnitTable/>
+              <ProductGrid/>
             </section>
           </div>
         </main>

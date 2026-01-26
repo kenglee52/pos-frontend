@@ -1,41 +1,182 @@
 import React, { useState } from "react";
 import { useDepartment } from "@/hooks/useDepartment";
-const EmployeeForm = () =>{
-   const {departments} = useDepartment();
-   const [employeeName, setEmployeeName] = useState("");
-   const [gender, setGender] = useState("");
-   const [tel, setTel] = useState("");
-   const [departmentID, setDepartmentID] = useState("");
-   const [password, setPassword] = useState("");
-   const handleSubmit = (e:React.FormEvent) =>{
-         e.preventDefault();
-         console.log(employeeName, gender, tel, departmentID, password);
-   }
-   return (
-     <section style={{fontFamily: "Noto Sans Lao"}}>
-       <form onSubmit={handleSubmit} className="p-5 rounded-xl shadow-2xl border-2 border-red-800/25">
-         <p className="text-white font-bold text-center text-xl mb-4">ຟອມເພີ່ມພະນັກງານ</p> 
-         <div className="container mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
-            <input onChange={(e)=>setEmployeeName(e.target.value)} placeholder="ຊື່ ແລະ ນາມສະກຸນ" type="text" className="px-3 py-2 rounded-md border-white/25 border-2 focus:outline-none" />
-            <select onChange={(e)=>setGender(e.target.value)} className="px-3 py-2 rounded-md border-white/25 border-2 focus:outline-none">
-               <option className="text-black" value="">--ເລືອກເພດ--</option>
-               <option className="text-black" value="ຊາຍ">ຊາຍ</option>
-               <option className="text-black" value="ຍິງ">ຍິງ</option>
+import { useEmployee } from "@/hooks/useEmployee";
+import Swal from "sweetalert2";
+
+const EmployeeForm = () => {
+  const { departments } = useDepartment();
+  const { createEmployee } = useEmployee();
+
+  const [employeeName, setEmployeeName] = useState("");
+  const [gender, setGender] = useState("");
+  const [tel, setTel] = useState("");
+  const [department, setDepartment] = useState("");
+  const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!employeeName || !gender || !tel || !department || !password) {
+      return Swal.fire({
+        icon: "warning",
+        title: "ແຈ້ງເຕືອນ",
+        text: "ກະລຸນາໃສ່ຂໍ້ມູນໃຫ້ຄົບ",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
+
+    if (password !== checkPassword) {
+      return setPasswordError("ລະຫັດຜ່ານບໍ່ຕົງກັນ");
+    }
+
+    await createEmployee({
+      employeeName,
+      gender,
+      tel,
+      departmentID: Number(department),
+      password,
+    });
+
+    Swal.fire({
+      icon: "success",
+      title: "ສຳເລັດ",
+      text: "ເພີ່ມພະນັກງານສຳເລັດ",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+
+    setEmployeeName("");
+    setGender("");
+    setTel("");
+    setDepartment("");
+    setPassword("");
+    setCheckPassword("");
+  };
+
+  return (
+    <div style={{fontFamily: "Noto Sans Lao"}} className="bg-background-dark border border-[#382929] w-full rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+
+      {/* Header */}
+      <div className="px-8 py-5 border-b border-[#382929] flex items-center bg-[#211111]">
+        <h3 className="text-xl font-bold text-white flex items-center gap-2">
+          <span className="material-symbols-outlined text-primary">
+            person_add
+          </span>
+          ເພີ່ມພະນັກງານໃໝ່
+        </h3>
+      </div>
+
+      {/* Body */}
+      <div className="p-8 overflow-y-auto custom-scrollbar">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6"
+        >
+          <label className="block">
+            <span className="text-sm font-medium text-[#b79e9e] mb-1 block">
+              ຊື່ – ນາມສະກຸນ *
+            </span>
+            <input
+              value={employeeName}
+              onChange={(e) => setEmployeeName(e.target.value)}
+              className="w-full bg-[#382929] rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+              placeholder="ປ້ອນຊື່ພະນັກງານ..."
+            />
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-medium text-[#b79e9e] mb-1 block">
+              ເພດ *
+            </span>
+            <select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="w-full bg-[#382929] rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4 appearance-none"
+            >
+              <option value="">-- ເລືອກເພດ --</option>
+              <option value="ຊາຍ">ຊາຍ</option>
+              <option value="ຍິງ">ຍິງ</option>
             </select>
-            <input onChange={(e)=>setTel(e.target.value)} placeholder="ເບີໂທລະສັບ" type="number" className="px-3 py-2 rounded-md border-white/25 border-2 focus:outline-none" />
-            <select onChange={(e)=>setDepartmentID(e.target.value)} className="px-3 py-2 rounded-md border-white/25 border-2 focus:outline-none">
-               <option className="text-black" value="">--ເລືອກພະແນກ--</option>
-               {departments.map((item) => (
-                  <option key={item.departmentID} className="text-black" value={item.departmentID} >{item.departmentName}</option>
-               ))}
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-medium text-[#b79e9e] mb-1 block">
+              ເບີໂທ *
+            </span>
+            <input
+              value={tel}
+              onChange={(e) => setTel(e.target.value)}
+              className="w-full bg-[#382929] rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+              placeholder="020xxxxxxxx"
+            />
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-medium text-[#b79e9e] mb-1 block">
+              ພະແນກ *
+            </span>
+            <select
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              className="w-full bg-[#382929] rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4 appearance-none"
+            >
+              <option value="">-- ເລືອກພະແນກ --</option>
+              {departments.map((d) => (
+                <option key={d.departmentID} value={d.departmentID}>
+                  {d.departmentName}
+                </option>
+              ))}
             </select>
-            <input onChange={(e)=>setPassword(e.target.value)} placeholder="ລະຫັດຜ່ານ" type="password" className="px-3 py-2 rounded-md border-white/25 border-2 focus:outline-none" />
-            <input placeholder="ຢືນຢັນລະຫັດຜ່ານ" type="password" className="px-3 py-2 rounded-md border-white/25 border-2 focus:outline-none" />
-         </div>
-         <button type="submit" className="py-2 px-5 rounded-lg bg-red-700 mt-4 font-bold cursor-pointer hover:scale-95 transform transition duration-300">ບັນທຶກ</button>
-       </form>
-     </section>
-   )
-}
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-medium text-[#b79e9e] mb-1 block">
+              ລະຫັດຜ່ານ *
+            </span>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-[#382929] rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+            />
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-medium text-[#b79e9e] mb-1 block">
+              ຢືນຢັນລະຫັດຜ່ານ *
+            </span>
+            <input
+              type="password"
+              value={checkPassword}
+              onChange={(e) => {
+                setCheckPassword(e.target.value);
+                setPasswordError(
+                  e.target.value !== password ? "ລະຫັດຜ່ານບໍ່ຕົງກັນ" : ""
+                );
+              }}
+              className="w-full bg-[#382929] rounded-lg text-white focus:ring-2 focus:ring-primary py-2 px-4"
+            />
+            {passwordError && (
+              <p className="text-red-500 text-xs mt-1">{passwordError}</p>
+            )}
+          </label>
+        </form>
+      </div>
+
+      {/* Footer */}
+      <div className="px-8 py-5 border-t border-[#382929] bg-[#211111] flex justify-end">
+        <button
+          onClick={handleSubmit}
+          className="px-8 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold shadow-lg transition-transform active:scale-95"
+        >
+          ບັນທຶກຂໍ້ມູນ
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default EmployeeForm;

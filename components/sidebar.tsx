@@ -70,11 +70,18 @@ const Sidebar = () => {
                 </a>
 
                 <a
-                  href="/category"
+                  href="/admin/category"
                   className="px-3 py-2 rounded-md text-sm text-[#b99d9d]
                        hover:bg-white/5 hover:text-white transition"
                 >
                   • ຈັດການຂໍ້ມູນປະເພດສິນຄ້າ
+                </a>
+                <a
+                  href="/admin/product"
+                  className="px-3 py-2 rounded-md text-sm text-[#b99d9d]
+                       hover:bg-white/5 hover:text-white transition"
+                >
+                  • ຈັດການຂໍ້ມູນສິນຄ້າ
                 </a>
               </div>
             )}
