@@ -10,7 +10,11 @@ export const useProduct = () =>{
     return {
          products: store.products,
          loading: store.loading,
+         seleted: store.selected,
          fetchAllProducts: store.fetchAll,
-         createProduct: store.create
+         createProduct: store.create,
+         fetchProductById: store.fetchById,
+         updateProduct: store.update,
+         removeProduct: store.remove
     }
 }

@@ -89,9 +89,9 @@ const Sidebar = () => {
               <span className="material-symbols-outlined">point_of_sale</span>
               <p className="text-sm font-medium leading-normal font-lao">ຈຸດຂາຍ (POS)</p>
             </a>
-            <a className="flex items-center gap-3 px-3 py-3 rounded-lg text-[#b99d9d] hover:bg-white/5 hover:text-white transition-colors group" href="#">
-              <span className="material-symbols-outlined">inventory_2</span>
-              <p className="text-sm font-medium leading-normal font-lao">ສາງສິນຄ້າ</p>
+            <a className="flex items-center gap-3 px-3 py-3 rounded-lg text-[#b99d9d] hover:bg-white/5 hover:text-white transition-colors group" href="/admin/delivery">
+              <span className="material-symbols-outlined">delivery_truck_speed</span>
+              <p className="text-sm font-medium leading-normal font-lao">ຈັດສົ່ງອໍເດີ</p>
             </a>
             <a className="flex items-center gap-3 px-3 py-3 rounded-lg text-[#b99d9d] hover:bg-white/5 hover:text-white transition-colors group" href="#">
               <span className="material-symbols-outlined">assessment</span>
