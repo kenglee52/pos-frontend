@@ -8,20 +8,32 @@ export default function LoginPage() {
   const [tel, setTel] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const login = async(e:React.FormEvent)=>{
-         e.preventDefault();
-         try {
-             const response = await api.post("/employee-login", {tel, password});
-             if(response.status === 200){
-                  router.push("/admin/dashboard");
-             }
-             else{
-                  alert("tel or password incorrect");
-             } 
-         } catch (error) {
-            console.log(error);
-         }
-}
+  const login = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await api.post("/employee-login", { tel, password });
+
+      if (response.status === 200) {
+        const user = response.data.data;
+
+        // ✅ ເກັບຂໍ້ມູນລົງ localStorage
+        localStorage.setItem("employee", JSON.stringify({
+          employeeID: user.employeeID,
+          employeeName: user.employeeName,
+          tel: user.tel,
+          gender: user.gender,
+          departmentName: user.department.departmentName
+        }));
+
+        // 👉 ໄປໜ້າ dashboard
+        router.push("/admin/dashboard");
+      } else {
+        alert("tel or password incorrect");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <style jsx global>{`
@@ -40,15 +52,15 @@ export default function LoginPage() {
 
       <div className="bg-[#f8f6f6] dark:bg-[#221010] min-h-screen flex items-center justify-center p-4 lg:p-0 font-lao">
         <div className="w-full h-screen flex overflow-hidden">
-          
+
           {/* Left Side: Visual Branding (Hidden on mobile, visible on lg screens) */}
           <div className="hidden lg:flex w-1/2 relative bg-[#2c1515] flex-col justify-between p-12 overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
               <div className="absolute inset-0 bg-gradient-to-br from-[#221010]/90 to-[#d41111]/40 z-10"></div>
               {/* Using a placeholder image related to retail/POS */}
-              <div 
-                className="w-full h-full bg-cover bg-center" 
+              <div
+                className="w-full h-full bg-cover bg-center"
                 style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVKUjeIZXFE2vHsv9bqt8dfihHBACOZGB08P-u_zmrk48Ylnwz66Tt1h2x-ee0diJ7KJXTx8Y0e7_O8bGUpnHg6FhSXabEpf-D04_vrp2cuBcOOaLvmjzEJdCXJjgQqgFj6hRpeR366adeSNMtcyMiWNg4XypTM--3wIvCbGsuF1wR08v79DkBya_mLomoukHDLFmrPQN0JyatRGwbSWyQvfb30P89Wc0VndEyr2pjnAM6XpLTczcclWsLVYE-j7DbqVnswuJsI4wk')" }}
               ></div>
             </div>
@@ -76,7 +88,7 @@ export default function LoginPage() {
           {/* Right Side: Login Form */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center items-center bg-[#f8f6f6] dark:bg-[#181111] overflow-y-auto">
             <div className="w-full max-w-[480px] p-6 sm:p-8 flex flex-col">
-              
+
               {/* Mobile Logo (Visible only on small screens) */}
               <div className="lg:hidden flex items-center gap-2 mb-8 self-center">
                 <div className="w-8 h-8 bg-[#d41111] rounded flex items-center justify-center text-white font-bold font-display">S</div>
@@ -94,10 +106,10 @@ export default function LoginPage() {
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-gray-700 dark:text-white" htmlFor="phone">ເບີໂທລະສັບ</label>
                   <div className="relative">
-                    <input onChange={(e)=>setTel(e.target.value)}
-                      id="phone" 
-                      type="text" 
-                      placeholder="20 XXXXXXXX" 
+                    <input onChange={(e) => setTel(e.target.value)}
+                      id="phone"
+                      type="text"
+                      placeholder="20 XXXXXXXX"
                       className="block w-full h-14 rounded-lg border-gray-300 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] text-gray-900 dark:text-white shadow-sm focus:border-[#d41111] focus:ring-[#d41111] dark:focus:border-[#d41111] dark:focus:ring-1 sm:text-base pl-4 pr-10 font-display placeholder:text-gray-400 dark:placeholder:text-[#6a5050]"
                     />
                     <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400 dark:text-[#b99d9d]">
@@ -115,13 +127,13 @@ export default function LoginPage() {
                     <label className="block text-sm font-medium text-gray-700 dark:text-white" htmlFor="password">ລະຫັດຜ່ານ</label>
                   </div>
                   <div className="relative rounded-lg shadow-sm">
-                    <input onChange={(e)=> setPassword(e.target.value)}
-                      id="password" 
-                      type={showPassword ? "text" : "password"} 
-                      placeholder="*********" 
+                    <input onChange={(e) => setPassword(e.target.value)}
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="*********"
                       className="block w-full h-14 rounded-lg border-gray-300 dark:border-[#543b3b] bg-white dark:bg-[#271c1c] text-gray-900 dark:text-white shadow-sm focus:border-[#d41111] focus:ring-[#d41111] dark:focus:border-[#d41111] dark:focus:ring-1 sm:text-base pl-4 pr-12 font-display placeholder:text-gray-400 dark:placeholder:text-[#6a5050]"
                     />
-                    <div 
+                    <div
                       className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-gray-400 dark:text-[#b99d9d] hover:text-[#d41111] transition-colors"
                       onClick={() => setShowPassword(!showPassword)}
                     >
@@ -146,8 +158,8 @@ export default function LoginPage() {
 
                 {/* Actions */}
                 <div className="pt-4">
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="flex w-full justify-center rounded-lg bg-[#d41111] px-3 py-4 text-base font-semibold text-white shadow-sm hover:bg-[#b90e0e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d41111] transition-all duration-200 tracking-wide"
                   >
                     ເຂົ້າສູ່ລະບົບ
@@ -157,7 +169,7 @@ export default function LoginPage() {
 
               {/* Footer Text */}
               <p className="mt-8 text-center text-sm text-gray-500 dark:text-[#7a6060]">
-                ຍັງບໍ່ມີບັນຊີເທື່ອບໍ? 
+                ຍັງບໍ່ມີບັນຊີເທື່ອບໍ?
                 <a href="#" className="font-semibold text-[#d41111] hover:text-[#b90e0e] transition-colors ml-1">ຕິດຕໍ່ຜູ້ເບິ່ງແຍງລະບົບ</a>
               </p>
             </div>

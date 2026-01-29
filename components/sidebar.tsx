@@ -85,7 +85,7 @@ const Sidebar = () => {
                 </a>
               </div>
             )}
-            <a className="flex items-center gap-3 px-3 py-3 rounded-lg text-[#b99d9d] hover:bg-white/5 hover:text-white transition-colors group" href="#">
+            <a className="flex items-center gap-3 px-3 py-3 rounded-lg text-[#b99d9d] hover:bg-white/5 hover:text-white transition-colors group" href="/admin/sale">
               <span className="material-symbols-outlined">point_of_sale</span>
               <p className="text-sm font-medium leading-normal font-lao">ຈຸດຂາຍ (POS)</p>
             </a>
